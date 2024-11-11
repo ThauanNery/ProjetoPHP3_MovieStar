@@ -26,12 +26,13 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
-        <form action="" method="GET" id="search-form" class="form-inline my-2 my-lg-0">
-            <input type="text" name="q" id="search" class="form-control mr-sm-2" type="search" placeholder="Buscar Filmes" aria-label="search">
-            <button class="btn my-2 my-sm-0" type="submit">
+        <form action="" method="GET" id="search-form" class="form-inline d-flex my-2 my-lg-0">
+            <input type="text" name="q" id="search" class="form-control mr-2" placeholder="Buscar Filmes" aria-label="search">
+            <button class="btn" type="submit">
                 <i class="fas fa-search"></i>
             </button>
         </form>
+
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -45,19 +46,21 @@
     <h1>Corpo</h1>
    </div>
    <footer id="footer">
-    <ul>
-        <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
-        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-    </ul>
-    <div id="footer-links-container">
-        <ul>
-            <li><a href="#">Adicionar Filme</a></li>
-            <li><a href="#">Adicionar Crítica</a></li>
-            <li><a href="#">Entrar / Registrar</a></li>
-        </ul>
-    </div>
-    <p>&copy;  2024 Thauan Nery</p>
+        <div id="social-container">
+            <ul>
+                <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+            </ul>
+        </div>
+        <div id="footer-links-container">
+            <ul>
+                <li><a href="#">Adicionar Filme</a></li>
+                <li><a href="#">Adicionar Crítica</a></li>
+                <li><a href="#">Entrar / Registrar</a></li>
+            </ul>
+        </div>
+        <p>&copy;  2024 Thauan Nery</p>
    </footer>
     <!--BOOTSTRAP JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
