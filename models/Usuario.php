@@ -3,11 +3,11 @@
     class Usuario
     {
         public $id;
-        public $nome;
-        public $sobrenome;
+        public $name;
+        public $lastname;
         public $email;
-        public $senha;
-        public $imagem;
+        public $password;
+        public $image;
         public $bio;
         public $token;
     }
@@ -19,7 +19,7 @@
         public function upadete(Usuario $user);
         public function verifyToken($protected = false);
         public function steTokenToSession($token, $redirect = true);
-        public function authenticateUser($email, $senha);
+        public function authenticateUser($email, $password);
         public function findByEmail($email);
         public function findById($id);
         public function findByToken($token);

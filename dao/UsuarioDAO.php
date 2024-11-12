@@ -19,11 +19,11 @@
             $user = new Usuario();
 
             $user->id = $data['id'];
-            $user->nome = $data['nome'];
-            $user->sobrenome = $data['sobrenome'];
+            $user->name = $data['name'];
+            $user->lastname = $data['lastname'];
             $user->email = $data['email'];
-            $user->senha = $data['senha'];
-            $user->imagem = $data['imagem'];
+            $user->password = $data['password'];
+            $user->image = $data['image'];
             $user->bio = $data['bio'];
             $user->token = $data['token'];
 
@@ -44,7 +44,7 @@
         {
 
         }
-        public function authenticateUser($email, $senha)
+        public function authenticateUser($email, $password)
         {
 
         }
