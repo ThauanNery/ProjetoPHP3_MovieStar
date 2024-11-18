@@ -6,7 +6,9 @@
     require_once("models/Message.php");
     require_once("dao/UsuarioDAO.php");
     
-    $message = new Message($BASE_URL_URL);
+    $message = new Message($BASE_URL);
+
+    $userDao = new UsuarioDAO($conn, $BASE_URL);
 
     //Verifica o tipo do form
     $type = filter_input(INPUT_POST, "type");
@@ -23,7 +25,38 @@
         //Verificação de dados min
         if($name && $lastname && $email && $password)
         {
+            //verificar se as senhas batem
+            if($password === $confirmPassword)
+            {
+                //verificar se o email já está cadastrado
+                if($userDao->findByEmail($email) === false)
+                {
+                    $user = new Usuario();
 
+                    //criação de token e senha
+
+                    $userToken = $user->generateToken();
+                    $finalPassword = $user->generatePassword($password);
+
+                    $user->name = $name;
+                    $user->lastname = $lastname;
+                    $user->email = $email;
+                    $user->password = $finalPassword;
+                    $user->token = $userToken;
+
+                    $auth = true;
+
+                    $userDao->create($user, $auth);
+                }
+                else
+                {
+                    $message->setMessage("E-mail já cadastrado.", "error", "back");
+                }
+            }
+            else
+            {
+                $message->setMessage("As senhas não são iguais.", "error", "back");
+            }
         }
         else
         {
