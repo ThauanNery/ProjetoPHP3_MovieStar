@@ -180,6 +180,16 @@
           }
     
         }
+
+        public function destroyToken()
+        {
+          //Remove o token da session
+          $_SESSION['token'] = "";
+
+          //redirecionar e apresentar mensagem de sucesso
+          $this->message->setMessage("Logout feito com sucesso", "success", "index.php");
+        }
+
         public function changePassword(Usuario $user)
         {
 
