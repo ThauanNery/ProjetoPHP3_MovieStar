@@ -26,7 +26,7 @@
     {
         public function buildUser($data);
         public function create(Usuario $user, $authUser = false);
-        public function update(Usuario $user);
+        public function update(Usuario $user, $redirect = true);
         public function verifyToken($protected = false);
         public function setTokenToSession($token, $redirect = true);
         public function authenticateUser($email, $password);
