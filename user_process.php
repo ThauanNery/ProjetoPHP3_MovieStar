@@ -69,6 +69,27 @@
     //atualizar senha do usuário
     else if($type === "changepassword")
     {
+        //receber dados do post
+        $password = filter_input(INPUT_POST, "password");
+        $confirmpassword = filter_input(INPUT_POST, "confirmpassword");
+        $id = filter_input(INPUT_POST, "id");
+
+        if($password == $confirmpassword)
+        {
+            $user = new Usuario();
+
+            $finalPassword = $user->generatePassword($password);
+
+            $user->password = $finalPassword;
+            $user->id = $id;
+
+            $userDao->changePassword($user);
+        }
+        else
+        {
+            $message->setMessage("As senhas não são iguais!", "error", "back");
+
+        }
 
     }
     else 

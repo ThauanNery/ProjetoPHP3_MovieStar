@@ -244,6 +244,14 @@
 
         public function changePassword(Usuario $user)
         {
+          $stmt = $this->conn->prepare("UPDATE usuarios SET password = :password WHERE id = :id");
 
+          $stmt->bindParam(":password", $user->password);
+          $stmt->bindParam(":id", $user->id);
+
+          $stmt->execute();
+
+          //redirecionar e apresentar mensagem de sucesso
+          $this->message->setMessage("Senha alterada com sucesso", "success", "editprofile.php");
         }
     }

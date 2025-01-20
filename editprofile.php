@@ -57,13 +57,14 @@
                 <p class="page-description">Digite sua nova senha e confirme, para alterar sua senha</p>
                 <form action="<?= $BASE_URL ?>user_process.php" method="POST">
                     <input type="hidden" name="type" value="changepassword">
+                    <input type="hidden" name="id" value="<?= $userData->id ?>">
                     <div class="form-group">
                         <label for="password">Senha:</label>
                         <input type="password" class="form-control" id="password" name="password" placeholder="Digite sua nova senha">
                     </div>
                     <div class="form-group">
-                        <label for="password">Cornfirmação Senha:</label>
-                        <input type="password" class="form-control" id="corfirmdpassword" name="corfirmdpassword" placeholder="Confirme sua nova senha">
+                        <label for="confirmpassword">Cornfirmação Senha:</label>
+                        <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirme sua nova senha">
                     </div>
                     <input type="submit" class="btn card-btn" value="Alterar senha">
                 </form>
