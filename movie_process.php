@@ -9,6 +9,7 @@
 
     $message = new Message($BASE_URL);
     $userDao = new UsuarioDAO($conn, $BASE_URL);
+    $movieDao = new MovieDAO($conn, $BASE_URL);
 
     $type = filter_input(INPUT_POST, "type");
 
@@ -33,38 +34,38 @@
             $movie->trailer = $trailer;
             $movie->category = $category;
             $movie->lenght = $lenght;
+            $movie->usuario_id = $userData->id;
 
-            //upload de imagem de de filme
-            if(isset($_FILES["image"]) && !empty($_FILES["image"]["tmp_namr"]))
-            {
+             // Upload de imagem do filme
+            if(isset($_FILES["image"]) && !empty($_FILES["image"]["tmp_name"])) {
+
                 $image = $_FILES["image"];
-                $imagetypes = ["image/jpeg", "image/jpg", "image/png"];
-                $jpgArry = ["image/jpeg", "image/jpg"];
+                $imageTypes = ["image/jpeg", "image/jpg", "image/png"];
+                $jpgArray = ["image/jpeg", "image/jpg"];
 
-                //chegando tipo da imagem
-                if(in_arry($image["type"], $imagetype))
-                {
-                    //checa se imagem é jpg
-                    if(in_array($image["type"], $jpgArry))
-                    {
-                        $imageFile = imagecreatefromjpeg($image["tmp_name"]);
-                    }
-                    else
-                    {
-                        $imageFile = imagecreatefrompng($image["tmp_name"]);
-                    }
+                // Checando tipo da imagem
+                if(in_array($image["type"], $imageTypes)) {
 
-                    $imageName = $movie->imageGenerateName();
-
-                    imagejpeg($imageFile, "./img/users/" . $imageName, 100);
-
-                    $userData->image = $imageName;
+                // Checa se imagem é jpg
+                if(in_array($image["type"], $jpgArray)) {
+                    $imageFile = imagecreatefromjpeg($image["tmp_name"]);
+                } else {
+                    $imageFile = imagecreatefrompng($image["tmp_name"]);
                 }
-                else
-                {
-                    $message->setMessage("Tipo inválido de imagem, insira pnj ou jpg.", "error", "back");
+
+                // Gerando o nome da imagem
+                $imageName = $movie->imageGenerateName();
+
+                imagejpeg($imageFile, "./img/movies/" . $imageName, 100);
+
+                $movie->image = $imageName;
+
+                } else {
+
+                $message->setMessage("Tipo inválido de imagem, insira png ou jpg!", "error", "back");
+
                 }
-                
+                    
             }
         }
         else

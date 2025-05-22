@@ -32,24 +32,26 @@
         $userData->email = $email;
         $userData->bio = $bio;
 
-        //upload da imagem
-        if(isset($_FILES["image"]) && !empty($_FILES["image"]["tmp_name"]))
-        {
+        // Upload da imagem
+        if(isset($_FILES["image"]) && !empty($_FILES["image"]["tmp_name"])) {
+            
             $image = $_FILES["image"];
-            $imagetypes = ["image/jpeg", "image/jpg", "image/png"];
-            $jpgArry = ["image/jpeg", "image/jpg"];
+            $imageTypes = ["image/jpeg", "image/jpg", "image/png"];
+            $jpgArray = ["image/jpeg", "image/jpg"];
 
-            //checando tipo da imagem
-            if(in_array($image["type"], $imagetypes))
-            {
-                //checar se é jpeg
-                if(in_array($image, $jpgArry))
-                {
-                    $imageFile = imagecreatefromjpeg($image["tmp_name"]);
-                }
-                else
-                {
-                    $imageFile = imagecreatefrompng($image["tmp_name"]);
+            // Checagem de tipo de imagem
+            if(in_array($image["type"], $imageTypes)) {
+
+                // Checar se jpg
+                if(in_array($image, $jpgArray)) {
+
+                $imageFile = imagecreatefromjpeg($image["tmp_name"]);
+
+                // Imagem é png
+                } else {
+
+                $imageFile = imagecreatefrompng($image["tmp_name"]);
+
                 }
 
                 $imageName = $user->imageGenerateName();
@@ -57,10 +59,11 @@
                 imagejpeg($imageFile, "./img/users/" . $imageName, 100);
 
                 $userData->image = $imageName;
-            }
-            else
-            {
-                $message->setMessage("Tipo inválido de imagem, insira pnj ou jpg.", "error", "back");            
+
+            } else {
+
+                $message->setMessage("Tipo inválido de imagem, insira png ou jpg!", "error", "back");
+
             }
         }
 

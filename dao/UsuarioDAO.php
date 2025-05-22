@@ -59,16 +59,17 @@
         }
   
       }
-        public function update(Usuario $user, $redirect = true)
+        public function update(Usuario $user, $redirect = true) 
         {
+
           $stmt = $this->conn->prepare("UPDATE usuarios SET
-          name = :name,
-          lastname = :lastname,
-          email = :email,
-          image = :image,
-          bio = :bio,
-          token = :token
-          WHERE id = :id
+            name = :name,
+            lastname = :lastname,
+            email = :email,
+            image = :image,
+            bio = :bio,
+            token = :token
+            WHERE id = :id
           ");
 
           $stmt->bindParam(":name", $user->name);
@@ -81,13 +82,14 @@
 
           $stmt->execute();
 
-          if($redirect) 
-          {
-    
+          if($redirect) {
+
+            // Redireciona para o perfil do usuario
             $this->message->setMessage("Dados atualizados com sucesso!", "success", "editprofile.php");
-    
+
           }
         }
+
         public function verifyToken($protected = false) 
         {
 

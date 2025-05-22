@@ -29,7 +29,7 @@
             $movie->trailer = $data["password"];
             $movie->category = $data["image"];
             $movie->lenght = $data["bio"];
-            $movie->users_id = $data["token"];
+            $movie->usuario_id = $data["token"];
       
             return $movie;
         }
@@ -46,7 +46,26 @@
 
         public function findByTitle($title){}
         
-        public function create(movie $movie){}
+        public function create(movie $movie)
+        {
+            $stmt = $this->conn->prepare("INSERT INTO filmes (
+            title, description, image, trailer, category, lenght, usuario_id
+            )VALUES(
+            :title, :description, :image, :trailer, :category, :lenght, :usuario_id
+            )");
+
+            $stmt->bindParam(":title", $movie->title);
+            $stmt->bindParam(":description", $movie->description);
+            $stmt->bindParam(":image", $movie->image);
+            $stmt->bindParam(":trailer", $movie->trailer);
+            $stmt->bindParam(":category", $movie->category);
+            $stmt->bindParam(":lenght", $movie->lenght);
+            $stmt->bindParam(":usuario_id", $movie->usuario_id);
+
+            $stmt->execute();
+
+            $this->message->setMessage("Filme adicionado com sucesso!", "success", "index.php");
+        }
 
         public function update(movie $movie){}
 
