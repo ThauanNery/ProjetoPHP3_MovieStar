@@ -36,7 +36,24 @@
         
         public function FindAll(){}
 
-        public function getLatestMovies(){}
+        public function getLatestMovies()
+        {
+            $movies = [];
+
+            $stmt = $this->conn->query("SELECT * FROM filmes ORDER BY id DESC");
+
+            $stmt->execute();
+
+            if($stmt->rowCount() > 0)
+            {
+                $moviesArray = $stmt->fetchAll();
+
+                foreach($moviesArray as $movie)
+                {
+                    $movies[] = $this->buildMovie($movie);
+                }
+            }
+        }
 
         public function getMovieByCategory($category){}
 
