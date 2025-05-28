@@ -20,16 +20,16 @@
 
         public function buildMovie($data)
         {
-            $user = new Movie();
+            $movie = new Movie();
   
             $movie->id = $data["id"];
-            $movie->title = $data["name"];
-            $movie->description = $data["lastname"];
-            $movie->image = $data["email"];
-            $movie->trailer = $data["password"];
-            $movie->category = $data["image"];
-            $movie->lenght = $data["bio"];
-            $movie->usuario_id = $data["token"];
+            $movie->title = $data["title"];
+            $movie->description = $data["description"];
+            $movie->image = $data["image"];
+            $movie->trailer = $data["trailer"];
+            $movie->category = $data["category"];
+            $movie->lenght = $data["lenght"];
+            $movie->usuario_id = $data["usuario_id"];
       
             return $movie;
         }

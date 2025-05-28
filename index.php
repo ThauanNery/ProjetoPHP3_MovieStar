@@ -7,6 +7,8 @@
 
     $latestMovies = $movieDao->getLatestMovies();
 
+    print_r($latestMovies);
+
     $actiontMovies = [];
 
     $comedyMovies = [];
