@@ -57,7 +57,31 @@
             return $movies;
         }
 
-        public function getMovieByCategory($category){}
+        public function getMovieByCategory($category)
+        {
+            
+            $movies = [];
+
+            $stmt = $this->conn->prepare("SELECT * FROM filmes 
+                                          WHERE category = :category
+                                          ORDER BY id DESC");
+
+            $stmt->bindParam(":category", $category);
+
+            $stmt->execute();
+
+            if($stmt->rowCount() > 0)
+            {
+                $moviesArray = $stmt->fetchAll();
+
+                foreach($moviesArray as $movie)
+                {
+                    $movies[] = $this->buildMovie($movie);
+                }
+            }
+
+            return $movies;
+        }
 
         public function getMoviesByUserId($id){}
 
