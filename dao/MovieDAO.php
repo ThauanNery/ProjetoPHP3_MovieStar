@@ -53,6 +53,8 @@
                     $movies[] = $this->buildMovie($movie);
                 }
             }
+
+            return $movies;
         }
 
         public function getMovieByCategory($category){}
