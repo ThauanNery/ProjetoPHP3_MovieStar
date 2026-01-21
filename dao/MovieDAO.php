@@ -34,7 +34,7 @@
             return $movie;
         }
         
-        public function FindAll(){}
+        public function findAll(){}
 
         public function getLatestMovies()
         {
@@ -83,13 +83,36 @@
             return $movies;
         }
 
-        public function getMoviesByUserId($id){}
+        public function getMoviesByUserId($id)
+        {
+             
+            $movies = [];
 
-        public function FinById($id){}
+            $stmt = $this->conn->prepare("SELECT * FROM filmes 
+                                          WHERE usuario_id = :usuario_id");
+
+            $stmt->bindParam(":usuario_id", $id);
+
+            $stmt->execute();
+
+            if($stmt->rowCount() > 0)
+            {
+                $moviesArray = $stmt->fetchAll();
+
+                foreach($moviesArray as $movie)
+                {
+                    $movies[] = $this->buildMovie($movie);
+                }
+            }
+
+            return $movies;
+        }
+
+        public function finById($id){}
 
         public function findByTitle($title){}
         
-        public function create(movie $movie)
+        public function create(Movie $movie)
         {
             $stmt = $this->conn->prepare("INSERT INTO filmes (
             title, description, image, trailer, category, lenght, usuario_id
@@ -110,7 +133,7 @@
             $this->message->setMessage("Filme adicionado com sucesso!", "success", "index.php");
         }
 
-        public function update(movie $movie){}
+        public function update(Movie $movie){}
 
         public function destroy($id){}
     }

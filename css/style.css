@@ -217,7 +217,9 @@
     margin-top: 30px;
 }
 
-.edit-profile-page .card-btn{
+.edit-profile-page .card-btn,
+#add-movie-container{
+
     width: auto;
 }
 
@@ -244,6 +246,74 @@
     display: block;
     margin: 0 auto;
     padding-top: 7px;
+}
+
+/*Dashboard*/
+#add-movie-container{
+    text-align: right;
+}
+
+#movies-dashboard .table{
+    color: #000000;
+}
+
+#movies-dashboard .table th{
+    border-top: none;
+}
+
+#movies-dashboard .table tr{
+    padding: 15px 0;
+}
+
+.table-movie-title{
+    color: #000000;
+    font-weight: bold;
+    transition: .5s;
+}
+
+.table-movie-title:hover{
+    color: #f5c518;
+    
+}
+
+.actions-column{
+    max-width: 75px;
+    text-align: center;
+
+}
+.actions-column form{
+    display: inline-block;
+}
+
+.edit-btn, 
+.delete-btn{
+    padding:5px 10px;
+    border-radius: 5px;
+    margin: 0 5px;
+    font-weight: bold;
+    transition: .5s;
+    border: none;
+
+}
+
+.edit-btn{
+    background-color: #0dcaf0;
+    color: #FFF;
+
+}
+.edit-btn:hover{
+     background-color: transparent;
+    color: #0dcaf0;
+}
+
+.delete-btn{
+    background-color: #dc3545;
+    color: #FFF;
+
+}
+.delete-btn:hover{
+     background-color: transparent;
+    color: #dc3545;
 }
 
 /*Footer*/
